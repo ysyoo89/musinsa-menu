@@ -8,16 +8,16 @@ import javax.persistence.*;
 @Getter
 @Entity
 @NoArgsConstructor
-@Table(name = "top-menu", schema = "menu")
-public class TopMenuEntity {
+public class BottomMenu {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
-    private String topMenuName;
+    private Long middleId;
 
     @Column
-    private String banner;
+    private String BottomMenuName;
+
 }
