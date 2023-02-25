@@ -1,12 +1,14 @@
 package com.musinsa.musinsamenu.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Getter
+@Setter
 @Entity
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 public class BottomMenu {
 
@@ -16,9 +18,13 @@ public class BottomMenu {
     private Long id;
 
     @Column
-    private String BottomMenuName;
+    private String bottomMenuName;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MIDDLE_MENU_ID")
     private MiddleMenu middleMenu;
+
+    public void addMiddleMenu(MiddleMenu middleMenu) {
+        this.middleMenu = middleMenu;
+    }
 }

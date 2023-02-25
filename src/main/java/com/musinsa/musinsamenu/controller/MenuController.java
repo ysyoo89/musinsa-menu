@@ -1,5 +1,6 @@
 package com.musinsa.musinsamenu.controller;
 
+import com.musinsa.musinsamenu.model.request.TopMenuCreateRequest;
 import com.musinsa.musinsamenu.service.MenuService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,8 +14,8 @@ public class MenuController {
     private final MenuService menuService;
 
     @PostMapping("/create")
-    public ResponseEntity<?> createMenu() {
-        menuService.createMenu();
+    public ResponseEntity<?> createMenu(@RequestBody TopMenuCreateRequest topMenuCreateRequest) {
+        menuService.createMenu(topMenuCreateRequest);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 

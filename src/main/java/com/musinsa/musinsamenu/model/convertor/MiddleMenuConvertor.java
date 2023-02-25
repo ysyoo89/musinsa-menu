@@ -9,7 +9,11 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring"
+        , uses = {
+            MiddleMenuConvertor.class
+            , BottomMenuConvertor.class
+})
 public interface MiddleMenuConvertor {
 
     MiddleMenuConvertor INSTANCE = Mappers.getMapper(MiddleMenuConvertor.class);

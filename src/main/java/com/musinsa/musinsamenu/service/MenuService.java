@@ -6,6 +6,7 @@ import com.musinsa.musinsamenu.entity.TopMenu;
 import com.musinsa.musinsamenu.model.convertor.BottomMenuConvertor;
 import com.musinsa.musinsamenu.model.convertor.MiddleMenuConvertor;
 import com.musinsa.musinsamenu.model.convertor.TopMenuConvertor;
+import com.musinsa.musinsamenu.model.request.TopMenuCreateRequest;
 import com.musinsa.musinsamenu.model.response.BottomMenuResponse;
 import com.musinsa.musinsamenu.model.response.MiddleMenuResponse;
 import com.musinsa.musinsamenu.model.response.TopMenuResponse;
@@ -29,8 +30,9 @@ public class MenuService {
     private final MiddleMenuConvertor middleMenuConvertor;
     private final BottomMenuConvertor bottomMenuConvertor;
 
-    public void createMenu() {
-
+    public void createMenu(TopMenuCreateRequest topMenuCreateRequest) {
+        TopMenu entity = topMenuConvertor.createToEntity(topMenuCreateRequest);
+        topMenuRepository.save(entity.mapping());
     }
 
     public TopMenuResponse getTopMenu(Long topMenuId) {

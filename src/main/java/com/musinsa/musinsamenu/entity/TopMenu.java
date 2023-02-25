@@ -1,14 +1,16 @@
 package com.musinsa.musinsamenu.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
+@Setter
 @Entity
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 @Table(name="top_menu")
 public class TopMenu {
@@ -24,6 +26,14 @@ public class TopMenu {
     @Column
     private String banner;
 
-    @OneToMany(mappedBy = "topMenu")
+    @OneToMany(mappedBy = "topMenu", cascade = CascadeType.PERSIST)
     private List<MiddleMenu> middleMenus = new ArrayList<>();
+
+    public TopMenu mapping() {
+        this.getMiddleMenus().forEach(m -> {
+                    m.addTopMenu(this);
+                    m.mapping();
+        });
+        return this;
+    }
 }

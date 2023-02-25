@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class MenuCreateRequest {
-    private String topMenuName;
-    private String banner;
+public class BottomMenuCreateRequest {
+    private Long middleMenuId;
+    private String bottomMenuName;
 }
