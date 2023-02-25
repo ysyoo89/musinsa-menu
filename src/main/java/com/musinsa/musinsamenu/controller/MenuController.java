@@ -28,8 +28,18 @@ public class MenuController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @GetMapping("/menu/{middleMenuId}")
-    public ResponseEntity<?> getMenu(@PathVariable Long middleMenuId) {
-        return ResponseEntity.ok(HttpStatus.OK);
+    @GetMapping("/top-menu/{topMenuId}")
+    public ResponseEntity<?> getTopMenu(@PathVariable Long topMenuId) {
+        return ResponseEntity.ok(menuService.getTopMenu(topMenuId));
+    }
+
+    @GetMapping("/middle-menu/{middleMenuId}")
+    public ResponseEntity<?> getMiddleMenu(@PathVariable Long middleMenuId) {
+        return ResponseEntity.ok(menuService.getMiddleMenu(middleMenuId));
+    }
+
+    @GetMapping("/bottom-menu/{bottomMenuId}")
+    public ResponseEntity<?> getBottomMenu(@PathVariable Long bottomMenuId) {
+        return ResponseEntity.ok(menuService.getBottomMenu(bottomMenuId));
     }
 }

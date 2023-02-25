@@ -12,12 +12,13 @@ public class BottomMenu {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "BOTTOM_MENU_ID")
     private Long id;
-
-    @Column
-    private Long middleId;
 
     @Column
     private String BottomMenuName;
 
+    @ManyToOne
+    @JoinColumn(name = "MIDDLE_MENU_ID")
+    private MiddleMenu middleMenu;
 }
