@@ -1,6 +1,7 @@
 package com.musinsa.musinsamenu.api.controller;
 
-import com.musinsa.musinsamenu.api.request.TopMenuCreateRequest;
+import com.musinsa.musinsamenu.api.request.MenuDeleteRequest;
+import com.musinsa.musinsamenu.api.request.TopMenuRequest;
 import com.musinsa.musinsamenu.service.MenuService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,20 +15,20 @@ public class MenuController {
     private final MenuService menuService;
 
     @PostMapping("/create")
-    public ResponseEntity<?> createMenu(@RequestBody TopMenuCreateRequest topMenuCreateRequest) {
-        menuService.createMenu(topMenuCreateRequest);
+    public ResponseEntity<?> createMenu(@RequestBody TopMenuRequest topMenuRequest) {
+        menuService.createMenu(topMenuRequest);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @PutMapping("/modify")
-    public ResponseEntity<?> modifyMenu(@RequestBody TopMenuCreateRequest topMenuCreateRequest) {
-        menuService.modifyMenu(topMenuCreateRequest);
+    public ResponseEntity<?> modifyMenu(@RequestBody TopMenuRequest topMenuRequest) {
+        menuService.modifyMenu(topMenuRequest);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @DeleteMapping("/remove")
-    public ResponseEntity<?> removeMenu(@RequestBody TopMenuCreateRequest topMenuCreateRequest) {
-        menuService.removeMenu(topMenuCreateRequest);
+    public ResponseEntity<?> removeMenu(@RequestBody MenuDeleteRequest menuDeleteRequest) {
+        menuService.removeMenu(menuDeleteRequest);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 

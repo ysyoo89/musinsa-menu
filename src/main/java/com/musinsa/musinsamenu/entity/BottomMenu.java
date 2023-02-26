@@ -21,15 +21,10 @@ public class BottomMenu {
     private String bottomMenuName;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "MIDDLE_MENU_ID")
+    @JoinColumn(name = "MIDDLE_MENU_ID", referencedColumnName = "MIDDLE_MENU_ID")
     private MiddleMenu middleMenu;
 
     public void addMiddleMenu(MiddleMenu middleMenu) {
         this.middleMenu = middleMenu;
-    }
-    public void detachFromTopMenu() {
-        if (this.middleMenu != null) {
-            this.middleMenu.getBottomMenus().remove(this);
-        }
     }
 }

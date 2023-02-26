@@ -1,12 +1,13 @@
 package com.musinsa.musinsamenu.service;
 
+import com.musinsa.musinsamenu.api.request.MenuDeleteRequest;
+import com.musinsa.musinsamenu.api.request.TopMenuRequest;
 import com.musinsa.musinsamenu.entity.BottomMenu;
 import com.musinsa.musinsamenu.entity.MiddleMenu;
 import com.musinsa.musinsamenu.entity.TopMenu;
 import com.musinsa.musinsamenu.model.convertor.BottomMenuConvertor;
 import com.musinsa.musinsamenu.model.convertor.MiddleMenuConvertor;
 import com.musinsa.musinsamenu.model.convertor.TopMenuConvertor;
-import com.musinsa.musinsamenu.api.request.TopMenuCreateRequest;
 import com.musinsa.musinsamenu.api.response.BottomMenuResponse;
 import com.musinsa.musinsamenu.api.response.MiddleMenuResponse;
 import com.musinsa.musinsamenu.api.response.TopMenuResponse;
@@ -29,8 +30,8 @@ public class MenuService {
     private final MiddleMenuConvertor middleMenuConvertor;
     private final BottomMenuConvertor bottomMenuConvertor;
 
-    public void createMenu(TopMenuCreateRequest topMenuCreateRequest) {
-        TopMenu entity = topMenuConvertor.createToEntity(topMenuCreateRequest);
+    public void createMenu(TopMenuRequest topMenuRequest) {
+        TopMenu entity = topMenuConvertor.createToEntity(topMenuRequest);
         topMenuRepository.save(entity.mapping());
     }
 
@@ -49,14 +50,18 @@ public class MenuService {
         return bottomMenuConvertor.toReponse(bottomMenu);
     }
 
-    public void modifyMenu(TopMenuCreateRequest topMenuCreateRequest) {
-        TopMenu entity = topMenuConvertor.createToEntity(topMenuCreateRequest);
+    public void modifyMenu(TopMenuRequest topMenuRequest) {
+        TopMenu entity = topMenuConvertor.createToEntity(topMenuRequest);
         topMenuRepository.save(entity.mapping());
     }
 
-    public void removeMenu(TopMenuCreateRequest topMenuCreateRequest) {
-        TopMenu entity = topMenuConvertor.createToEntity(topMenuCreateRequest);
-        //entity.removeMapping();
-        topMenuRepository.delete(entity.mapping());
+    public void removeMenu(MenuDeleteRequest menuDeleteRequest) {
+        if (menuDeleteRequest.isTopMenu()) {
+            topMenuRepository.deleteById(menuDeleteRequest.getTopId());
+        } else if (menuDeleteRequest.isMiddleMenu()) {
+            middleMenuRepository.deleteById(menuDeleteRequest.getMiddleId());
+        } else {
+            bottomMenuRepository.deleteById(menuDeleteRequest.getBottomId());
+        }
     }
 }

@@ -9,9 +9,9 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class TopMenuCreateRequest {
+public class TopMenuRequest {
     private Long id;
     private String topMenuName;
     private String banner;
-    private List<MiddleMenuCreateRequest> middleMenus;
+    private List<MiddleMenuRequest> middleMenus;
 }

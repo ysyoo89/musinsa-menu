@@ -1,8 +1,8 @@
 package com.musinsa.musinsamenu.model.convertor;
 
+import com.musinsa.musinsamenu.api.request.TopMenuRequest;
 import com.musinsa.musinsamenu.entity.TopMenu;
 import com.musinsa.musinsamenu.model.dto.TopMenuModel;
-import com.musinsa.musinsamenu.api.request.TopMenuCreateRequest;
 import com.musinsa.musinsamenu.api.response.TopMenuResponse;
 import org.mapstruct.Mapper;
 
@@ -18,6 +18,6 @@ public interface TopMenuConvertor {
 
     TopMenuResponse toResponse(TopMenu topMenu);
 
-    TopMenu createToEntity(TopMenuCreateRequest topMenuCreateRequest);
+    TopMenu createToEntity(TopMenuRequest topMenuRequest);
 
 }

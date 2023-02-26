@@ -25,7 +25,7 @@ public class MiddleMenu {
     private String middleMenuName;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "TOP_MENU_ID")
+    @JoinColumn(name = "TOP_MENU_ID", referencedColumnName = "TOP_MENU_ID")
     private TopMenu topMenu;
 
     @OneToMany(mappedBy = "middleMenu", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
@@ -41,7 +41,4 @@ public class MiddleMenu {
         }
     }
 
-   public void removeMapping() {
-        this.setBottomMenus(null);
-   }
 }

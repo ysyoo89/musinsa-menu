@@ -1,6 +1,5 @@
 package com.musinsa.musinsamenu.entity;
 
-import com.musinsa.musinsamenu.api.request.TopMenuCreateRequest;
 import lombok.*;
 
 import javax.persistence.*;
@@ -38,10 +37,6 @@ public class TopMenu {
             });
         }
         return this;
-    }
-
-    public void removeMapping() {
-        this.getMiddleMenus();
     }
 
 }

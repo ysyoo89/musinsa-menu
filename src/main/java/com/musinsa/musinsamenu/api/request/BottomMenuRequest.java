@@ -4,14 +4,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 @NoArgsConstructor
-public class MiddleMenuCreateRequest {
+public class BottomMenuRequest {
     private Long id;
-    private Long topMenuId;
-    private String middleMenuName;
-    private List<BottomMenuCreateRequest> bottomMenus;
+    private Long middleMenuId;
+    private String bottomMenuName;
 }
