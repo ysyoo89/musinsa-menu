@@ -1,4 +1,4 @@
-package com.musinsa.musinsamenu.model.request;
+package com.musinsa.musinsamenu.api.request;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,5 +1,6 @@
 package com.musinsa.musinsamenu.entity;
 
+import com.musinsa.musinsamenu.api.request.TopMenuCreateRequest;
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,14 +27,21 @@ public class TopMenu {
     @Column
     private String banner;
 
-    @OneToMany(mappedBy = "topMenu", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "topMenu", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private List<MiddleMenu> middleMenus = new ArrayList<>();
 
     public TopMenu mapping() {
-        this.getMiddleMenus().forEach(m -> {
-                    m.addTopMenu(this);
-                    m.mapping();
-        });
+        if (this.getMiddleMenus() != null) {
+            this.getMiddleMenus().forEach(m -> {
+                m.addTopMenu(this);
+                m.mapping();
+            });
+        }
         return this;
     }
+
+    public void removeMapping() {
+        this.getMiddleMenus();
+    }
+
 }

@@ -1,6 +1,6 @@
-package com.musinsa.musinsamenu.controller;
+package com.musinsa.musinsamenu.api.controller;
 
-import com.musinsa.musinsamenu.model.request.TopMenuCreateRequest;
+import com.musinsa.musinsamenu.api.request.TopMenuCreateRequest;
 import com.musinsa.musinsamenu.service.MenuService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,12 +20,14 @@ public class MenuController {
     }
 
     @PutMapping("/modify")
-    public ResponseEntity<?> modifyMenu() {
+    public ResponseEntity<?> modifyMenu(@RequestBody TopMenuCreateRequest topMenuCreateRequest) {
+        menuService.modifyMenu(topMenuCreateRequest);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @DeleteMapping("/remove")
-    public ResponseEntity<?> removeMenu() {
+    public ResponseEntity<?> removeMenu(@RequestBody TopMenuCreateRequest topMenuCreateRequest) {
+        menuService.removeMenu(topMenuCreateRequest);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 

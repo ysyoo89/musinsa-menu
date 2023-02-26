@@ -1,17 +1,10 @@
 package com.musinsa.musinsamenu.model.convertor;
 
-import com.musinsa.musinsamenu.entity.BottomMenu;
-import com.musinsa.musinsamenu.entity.MiddleMenu;
 import com.musinsa.musinsamenu.entity.TopMenu;
 import com.musinsa.musinsamenu.model.dto.TopMenuModel;
-import com.musinsa.musinsamenu.model.request.BottomMenuCreateRequest;
-import com.musinsa.musinsamenu.model.request.MiddleMenuCreateRequest;
-import com.musinsa.musinsamenu.model.request.TopMenuCreateRequest;
-import com.musinsa.musinsamenu.model.response.BottomMenuResponse;
-import com.musinsa.musinsamenu.model.response.MiddleMenuResponse;
-import com.musinsa.musinsamenu.model.response.TopMenuResponse;
+import com.musinsa.musinsamenu.api.request.TopMenuCreateRequest;
+import com.musinsa.musinsamenu.api.response.TopMenuResponse;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring"
     , uses = {

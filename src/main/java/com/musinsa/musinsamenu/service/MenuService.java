@@ -6,14 +6,13 @@ import com.musinsa.musinsamenu.entity.TopMenu;
 import com.musinsa.musinsamenu.model.convertor.BottomMenuConvertor;
 import com.musinsa.musinsamenu.model.convertor.MiddleMenuConvertor;
 import com.musinsa.musinsamenu.model.convertor.TopMenuConvertor;
-import com.musinsa.musinsamenu.model.request.TopMenuCreateRequest;
-import com.musinsa.musinsamenu.model.response.BottomMenuResponse;
-import com.musinsa.musinsamenu.model.response.MiddleMenuResponse;
-import com.musinsa.musinsamenu.model.response.TopMenuResponse;
+import com.musinsa.musinsamenu.api.request.TopMenuCreateRequest;
+import com.musinsa.musinsamenu.api.response.BottomMenuResponse;
+import com.musinsa.musinsamenu.api.response.MiddleMenuResponse;
+import com.musinsa.musinsamenu.api.response.TopMenuResponse;
 import com.musinsa.musinsamenu.repository.BottomMenuRepository;
 import com.musinsa.musinsamenu.repository.MiddleMenuRepository;
 import com.musinsa.musinsamenu.repository.TopMenuRepository;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -48,5 +47,16 @@ public class MenuService {
     public BottomMenuResponse getBottomMenu(Long bottomMenuId) {
         BottomMenu bottomMenu = bottomMenuRepository.findById(bottomMenuId).orElseThrow(NoSuchElementException::new);
         return bottomMenuConvertor.toReponse(bottomMenu);
+    }
+
+    public void modifyMenu(TopMenuCreateRequest topMenuCreateRequest) {
+        TopMenu entity = topMenuConvertor.createToEntity(topMenuCreateRequest);
+        topMenuRepository.save(entity.mapping());
+    }
+
+    public void removeMenu(TopMenuCreateRequest topMenuCreateRequest) {
+        TopMenu entity = topMenuConvertor.createToEntity(topMenuCreateRequest);
+        //entity.removeMapping();
+        topMenuRepository.delete(entity.mapping());
     }
 }

@@ -1,4 +1,4 @@
-package com.musinsa.musinsamenu.model.response;
+package com.musinsa.musinsamenu.api.response;
 
 import lombok.*;
 

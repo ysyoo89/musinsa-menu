@@ -27,4 +27,9 @@ public class BottomMenu {
     public void addMiddleMenu(MiddleMenu middleMenu) {
         this.middleMenu = middleMenu;
     }
+    public void detachFromTopMenu() {
+        if (this.middleMenu != null) {
+            this.middleMenu.getBottomMenus().remove(this);
+        }
+    }
 }

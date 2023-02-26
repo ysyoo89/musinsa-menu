@@ -1,4 +1,4 @@
-package com.musinsa.musinsamenu.model.request;
+package com.musinsa.musinsamenu.api.request;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,6 +10,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class MiddleMenuCreateRequest {
+    private Long id;
     private Long topMenuId;
     private String middleMenuName;
     private List<BottomMenuCreateRequest> bottomMenus;

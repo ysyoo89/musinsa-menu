@@ -28,7 +28,7 @@ public class MiddleMenu {
     @JoinColumn(name = "TOP_MENU_ID")
     private TopMenu topMenu;
 
-    @OneToMany(mappedBy = "middleMenu", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "middleMenu", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private List<BottomMenu> bottomMenus = new ArrayList<>();
 
     public void addTopMenu(TopMenu topMenu) {
@@ -36,6 +36,12 @@ public class MiddleMenu {
     }
 
     public void mapping() {
-        this.getBottomMenus().forEach(m -> m.addMiddleMenu(this));
+        if (this.getBottomMenus() != null) {
+            this.getBottomMenus().forEach(m -> m.addMiddleMenu(this));
+        }
     }
+
+   public void removeMapping() {
+        this.setBottomMenus(null);
+   }
 }

@@ -1,4 +1,4 @@
-package com.musinsa.musinsamenu.model.request;
+package com.musinsa.musinsamenu.api.request;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class BottomMenuCreateRequest {
+    private Long id;
     private Long middleMenuId;
     private String bottomMenuName;
 }

@@ -1,10 +1,8 @@
 package com.musinsa.musinsamenu.model.convertor;
 
 import com.musinsa.musinsamenu.entity.MiddleMenu;
-import com.musinsa.musinsamenu.entity.TopMenu;
 import com.musinsa.musinsamenu.model.dto.MiddleMenuModel;
-import com.musinsa.musinsamenu.model.dto.TopMenuModel;
-import com.musinsa.musinsamenu.model.response.MiddleMenuResponse;
+import com.musinsa.musinsamenu.api.response.MiddleMenuResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
