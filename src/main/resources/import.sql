@@ -1,6 +1,6 @@
-INSERT INTO TOP_MENU (top_menu_name, banner) VALUES('옷', '');
-INSERT INTO TOP_MENU (top_menu_name, banner) VALUES('모자', '');
-INSERT INTO TOP_MENU (top_menu_name, banner) VALUES('신발', '');
+INSERT INTO TOP_MENU (top_menu_name, banner_id) VALUES('옷', null);
+INSERT INTO TOP_MENU (top_menu_name, banner_id) VALUES('모자', null);
+INSERT INTO TOP_MENU (top_menu_name, banner_id) VALUES('신발', null);
 
 INSERT INTO MIDDLE_MENU (top_menu_id, middle_menu_name) VALUES(1, '상의');
 INSERT INTO MIDDLE_MENU (top_menu_id, middle_menu_name) VALUES(1, '하의');

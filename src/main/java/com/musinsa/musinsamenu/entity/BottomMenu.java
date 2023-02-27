@@ -17,7 +17,7 @@ public class BottomMenu {
     @Column(name = "BOTTOM_MENU_ID")
     private Long id;
 
-    @Column
+    @Column(updatable=false)
     private String bottomMenuName;
 
     @ManyToOne(fetch = FetchType.LAZY)

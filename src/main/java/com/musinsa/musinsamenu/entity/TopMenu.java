@@ -1,6 +1,7 @@
 package com.musinsa.musinsamenu.entity;
 
 import lombok.*;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -20,11 +21,11 @@ public class TopMenu {
     @Column(name = "TOP_MENU_ID")
     private Long id;
 
-    @Column
+    @Column(updatable=false)
     private String topMenuName;
 
     @Column
-    private String banner;
+    private Long bannerId;
 
     @OneToMany(mappedBy = "topMenu", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private List<MiddleMenu> middleMenus = new ArrayList<>();

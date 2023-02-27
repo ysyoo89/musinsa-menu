@@ -69,4 +69,15 @@ public class MenuRepositoryTest {
         assertEquals(2, middleMenu.getBottomMenus().size());
         assertEquals(1, bottomMenu.getMiddleMenu().getId());
     }
+
+    @Test
+    void removeMenu() {
+        topMenuRepository.deleteById(1L);
+        List<TopMenu> list = topMenuRepository.findAll();
+        List<MiddleMenu> middleList = middleMenuRepository.findAll();
+        List<BottomMenu> bottomMenuList = bottomMenuRepository.findAll();
+        assertEquals(2, list.size());
+        assertEquals(5, middleList.size());
+        assertEquals(6, bottomMenuList.size());
+    }
 }

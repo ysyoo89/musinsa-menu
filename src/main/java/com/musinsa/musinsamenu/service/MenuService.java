@@ -1,5 +1,6 @@
 package com.musinsa.musinsamenu.service;
 
+import com.musinsa.musinsamenu.api.request.BannerRequest;
 import com.musinsa.musinsamenu.api.request.MenuDeleteRequest;
 import com.musinsa.musinsamenu.api.request.TopMenuRequest;
 import com.musinsa.musinsamenu.entity.BottomMenu;
@@ -16,6 +17,7 @@ import com.musinsa.musinsamenu.repository.MiddleMenuRepository;
 import com.musinsa.musinsamenu.repository.TopMenuRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.NoSuchElementException;
 
@@ -63,5 +65,13 @@ public class MenuService {
         } else {
             bottomMenuRepository.deleteById(menuDeleteRequest.getBottomId());
         }
+    }
+
+    @Transactional
+    public void connectBanner(Long topMenuId, Long bannerId) {
+        topMenuRepository.save(TopMenu.builder()
+                .id(topMenuId)
+                .bannerId(bannerId)
+                .build());
     }
 }

@@ -19,7 +19,7 @@ public class MiddleMenu {
     @Column(name = "MIDDLE_MENU_ID")
     private Long id;
 
-    @Column
+    @Column(updatable=false)
     private String middleMenuName;
 
     @ManyToOne(fetch = FetchType.LAZY)

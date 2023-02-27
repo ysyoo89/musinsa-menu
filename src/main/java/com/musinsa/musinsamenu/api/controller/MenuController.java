@@ -1,7 +1,9 @@
 package com.musinsa.musinsamenu.api.controller;
 
+import com.musinsa.musinsamenu.api.request.BannerRequest;
 import com.musinsa.musinsamenu.api.request.MenuDeleteRequest;
 import com.musinsa.musinsamenu.api.request.TopMenuRequest;
+import com.musinsa.musinsamenu.service.BannerService;
 import com.musinsa.musinsamenu.service.MenuService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -10,9 +12,10 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/menu")
 public class MenuController {
     private final MenuService menuService;
+    private final BannerService bannerService;
 
     @PostMapping("/create")
     public ResponseEntity<?> createMenu(@RequestBody TopMenuRequest topMenuRequest) {
@@ -45,5 +48,11 @@ public class MenuController {
     @GetMapping("/bottom-menu/{bottomMenuId}")
     public ResponseEntity<?> getBottomMenu(@PathVariable Long bottomMenuId) {
         return ResponseEntity.ok(menuService.getBottomMenu(bottomMenuId));
+    }
+
+    @GetMapping("/connect/banner/{topMenuId}/{bannerId}")
+    public ResponseEntity<?> connectBanner(@PathVariable("topMenuId") Long topMenuId, @PathVariable("bannerId") Long bannerId) {
+        menuService.connectBanner(topMenuId, bannerId);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 }
