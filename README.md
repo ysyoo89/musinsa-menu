@@ -44,7 +44,7 @@
 </ul>
 <div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>$ git clone https://github.com/ysyoo89/musinsa-menu.git
 $ cd musinsa-menu
-$ ./gradlew clean build
+$ ./gradlew clean build -x test
 $ java -jar build/libs/musinsa-menu-0.0.1-SNAPSHOT.jar
 </code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
     <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="$ git clone https://github.com/ysyoo89/musinsa-menu.git
