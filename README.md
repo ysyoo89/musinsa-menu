@@ -9,7 +9,8 @@
 <ul dir="auto">
 <li><a href="#개발-환경">개발 환경</a></li>
 <li><a href="#빌드-및-실행하기">빌드 및 실행하기</a></li>
-<li><a href="#기능-요구하기">기능 요구사항</a></li>
+<li><a href="#개발-요구사항">개발-요구사항</a></li>
+<li><a href="#제출과제">제출과제</a></li>            
 <li><a href="#api-">api 정보</a></li>
 </ul>
 <hr>
